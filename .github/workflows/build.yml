@@ -2,7 +2,7 @@ name: spigot_autobuild
 on: workflow_dispatch
 jobs:
   build_above_1_17_1:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     strategy:
             matrix:
                 ver:
@@ -33,7 +33,7 @@ jobs:
         run: java -jar BuildTools.jar --rev $ver --output-dir ./above_1.17.1
 
   build_in_1_17_1-1_17:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     strategy:
             matrix:
                 ver:
@@ -60,7 +60,7 @@ jobs:
         run: java -jar BuildTools.jar --rev $ver --output-dir ./in_1.17.1-1.17
   
   build_below_1_17:
-    runs-on: ubuntu_latest
+    runs-on: ubuntu-latest
     strategy:
             matrix:
                 ver:
