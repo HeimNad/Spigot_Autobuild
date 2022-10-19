@@ -15,7 +15,7 @@ jobs:
     # These values are later given to the BuildTools.jar as '--rev' argument
     #
     # Example: latest, 1.19.2, 1.8.8
-          versions: 1.19.2, 1,19.1, 1.19, 1.18.2, 1.18.1, 1.18 # Optional
+          versions: 1.19.2, 1.19.1, 1.19, 1.18.2, 1.18.1, 1.18 # Optional
 
     # Should sources be generated?
     # If enabled, BuildTools is provided the '--generate-source' argument
