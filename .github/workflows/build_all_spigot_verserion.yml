@@ -42,12 +42,12 @@ jobs:
     needs:
       - build_above_1_17_1
     steps:
-      - run: mkdir spigot_release
+      - run: mkdir ./spigot_release
       
       - uses: actions/download-artifact@v3.0.0
         with:
-          name: output_spigot_release
-          path: spigot_release/
+          name: spigot_release
+          path: ./spigot_release/
       
       - name: Upload to release
         uses: ncipollo/release-action@v1.11.1
@@ -56,4 +56,4 @@ jobs:
           allowUpdates: true
           replacesArtifacts: true
           token: ${{ secrets.GITHUB_TOKEN }}
-          artifacts: spigot_release/*
+          artifacts: ./spigot_release/*
