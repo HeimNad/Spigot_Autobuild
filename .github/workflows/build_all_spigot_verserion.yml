@@ -148,30 +148,30 @@ jobs:
         continue-on-error: true
         run: java -jar BuildTools.jar --rev $ver --output-dir ./outputs
           
-  upload_and_dist:
-        needs:
-            - build_above_1_17_1
-            - build_in_1_17_1-1_17
-            - build_below_1_17
+  upload:
+    needs:
+      - build_above_1_17_1
+      - build_in_1_17_1-1_17
+      - build_below_1_17
 
-        runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
-        steps:
-            - run: mkdir spigot
+    steps:
+      - run: mkdir spigot
 
-            - uses: actions/download-artifact@v3.0.0
-              with:
-                  name: outputs
-                  path: spigot/
+      - uses: actions/download-artifact@v3.0.0
+        with:
+          name: outputs
+          path: spigot/
 
-            - run: "tree"
+      - run: "tree"
 
-            - name: Upload to release
-              uses: ncipollo/release-action@v1.11.1
-              with:
-                  name: Spigot_Release
-                  allowUpdates: true
-                  replacesArtifacts: true
-                  tag: BuildRelease
-                  token: ${{ secrets.GITHUB_TOKEN }}
-                  artifacts: spigot/*
+      - name: Upload to release
+        uses: ncipollo/release-action@v1.11.1
+        with:
+          name: Spigot_Release
+          allowUpdates: true
+          replacesArtifacts: true
+          tag: BuildRelease
+          token: ${{ secrets.GITHUB_TOKEN }}
+          artifacts: spigot/*
