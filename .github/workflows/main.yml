@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ver:
+        versions:
           - '1.19.2'
           - '1.19.1'
           - '1.19'
@@ -13,7 +13,7 @@ jobs:
           - '1.18.1'
           - '1.18'
     env:
-        ver: ${{ matrix.ver }}
+        ver: ${{ matrix.versions }}
     steps:
       - name: Setup Java 17
         uses: actions/setup-java@v3.6.0
@@ -41,11 +41,11 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ver:
+        versions:
           - '1.17.1'
           - '1.17'
     env:
-        ver: ${{ matrix.ver }}
+        ver: ${{ matrix.versions }}
     steps:
       - name: Setup Java 16
         uses: actions/setup-java@v3.6.0
@@ -73,7 +73,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ver:
+        versions:
           - '1.16.5'
           - '1.16.4'
           - '1.16.3'
@@ -104,7 +104,7 @@ jobs:
           - '1.8.3'
           - '1.8'
     env:
-        ver: ${{ matrix.ver }}
+        ver: ${{ matrix.versions }}
     steps:
       - name: Setup Java 8
         uses: actions/setup-java@v3.6.0
