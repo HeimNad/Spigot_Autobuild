@@ -52,7 +52,7 @@ jobs:
       - name: Upload to release
         uses: ncipollo/release-action@v1.11.1
         with:
-          name: Build_Spigot
+          name: Build_Distribute
           allowUpdates: true
           replacesArtifacts: true
           token: ${{ secrets.GITHUB_TOKEN }}
