@@ -24,17 +24,17 @@ jobs:
       - name: Download BuildTools.jar
         run: wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
         
-      - name: Create Output File
-        run: mkdir ./spigot/above_1.17.1
-      
+      - run: mkdir ./outputs
+
       - name: Build Jars
         continue-on-error: true
-        run: java -jar BuildTools.jar --rev $ver --output-dir path/spigot/ver/above_1.17.1
-        
-      - name: Upload Jar Files
+        run: java -jar BuildTools.jar --rev $ver --output-dir ./outputs
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          path: ./spigot/all
+          name: outputs
+          path: outputs
 
   build_in_1_17_1-1_17:
     runs-on: ubuntu-latest
@@ -55,18 +55,17 @@ jobs:
       - name: Download BuildTools.jar
         run: wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
         
-      - name: Create Output File
-        run: mkdir ./spigot/in_1.17.1-1.17
-      
+      - run: mkdir ./outputs
+
       - name: Build Jars
-        # if: ${{ matrix.ver !=  env.latest }}
         continue-on-error: true
-        run: java -jar BuildTools.jar --rev $ver --output-dir path/spigot/ver/in_1.17.1-1.17
-      
-      - name: Upload Jar Files
+        run: java -jar BuildTools.jar --rev $ver --output-dir ./outputs
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          path: ./spigot/all
+          name: outputs
+          path: outputs
   
   build_below_1_17:
     runs-on: ubuntu-latest
@@ -148,18 +147,17 @@ jobs:
       - name: Download BuildTools.jar
         run: wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
         
-      - name: Create Output File
-        run: mkdir ./spigotbelow_1.17
-        
+      - run: mkdir ./outputs
+
       - name: Build Jars
-        # if: ${{ matrix.ver !=  env.latest }}
         continue-on-error: true
-        run: java -jar BuildTools.jar --rev $ver --output-dir path/spigot/ver/below_1.17
-        
-      - name: Upload Jar Files
+        run: java -jar BuildTools.jar --rev $ver --output-dir ./outputs
+
+      - name: Upload artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          path: ./spigot/all
+          name: outputs
+          path: outputs
           
   upload:
     runs-on: ubuntu-latest
