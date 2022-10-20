@@ -25,7 +25,7 @@ jobs:
         run: wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
         
       - name: Create Output File
-        run: mkdir path/spigot/above_1.17.1
+        run: mkdir ./spigot/above_1.17.1
       
       - name: Build Jars
         continue-on-error: true
@@ -34,7 +34,7 @@ jobs:
       - name: Upload Jar Files
         uses: actions/upload-artifact@v3.1.0
         with:
-          path: path/spigot/all
+          path: ./spigot/all
 
   build_in_1_17_1-1_17:
     runs-on: ubuntu-latest
@@ -56,7 +56,7 @@ jobs:
         run: wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
         
       - name: Create Output File
-        run: mkdir path/spigot/in_1.17.1-1.17
+        run: mkdir ./spigot/in_1.17.1-1.17
       
       - name: Build Jars
         # if: ${{ matrix.ver !=  env.latest }}
@@ -66,7 +66,7 @@ jobs:
       - name: Upload Jar Files
         uses: actions/upload-artifact@v3.1.0
         with:
-          path: path/spigot/all
+          path: ./spigot/all
   
   build_below_1_17:
     runs-on: ubuntu-latest
@@ -149,7 +149,7 @@ jobs:
         run: wget https://hub.spigotmc.org/jenkins/job/BuildTools/lastSuccessfulBuild/artifact/target/BuildTools.jar
         
       - name: Create Output File
-        run: mkdir path/spigot/below_1.17
+        run: mkdir ./spigotbelow_1.17
         
       - name: Build Jars
         # if: ${{ matrix.ver !=  env.latest }}
@@ -159,7 +159,7 @@ jobs:
       - name: Upload Jar Files
         uses: actions/upload-artifact@v3.1.0
         with:
-          path: path/spigot/all
+          path: ./spigot/all
           
   upload:
     runs-on: ubuntu-latest
